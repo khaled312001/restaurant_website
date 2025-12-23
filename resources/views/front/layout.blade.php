@@ -156,20 +156,34 @@
         let langCode = "{{ $currentLang->code }}";
 
         // Define path to your localization files
-        let script = document.createElement('script');
-        script.src = `{{ url('assets/front/multipurpose/datepickerJs/datepicker-') }}${langCode}.js`;
-        script.onload = function() {
-            // Initialize datepicker after language file is loaded
-            $.datepicker.setDefaults($.datepicker.regional[langCode]);
+        // Skip loading external datepicker script if language is English (default)
+        if (langCode !== 'en') {
+            let script = document.createElement('script');
+            script.src = `{{ url('assets/front/multipurpose/datepickerJs/datepicker-') }}${langCode}.js`;
+            script.onload = function() {
+                // Initialize datepicker after language file is loaded
+                $.datepicker.setDefaults($.datepicker.regional[langCode]);
 
+                $("input.datepicker").datepicker({
+                    minDate: 0
+                });
+
+                localizeDatepickerDigits(langCode);
+            };
+            script.onerror = function() {
+                // Fallback to default English if language file not found
+                $("input.datepicker").datepicker({
+                    minDate: 0
+                });
+            };
+
+            document.head.appendChild(script);
+        } else {
+            // For English, directly initialize datepicker
             $("input.datepicker").datepicker({
                 minDate: 0
             });
-
-            localizeDatepickerDigits(langCode);
-        };
-
-        document.head.appendChild(script);
+        }
 
         function translateDigits(input, lang) {
             const digitMaps = {
