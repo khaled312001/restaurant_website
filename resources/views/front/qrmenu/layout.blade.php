@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="qr-breadcrumb lazy" data-bg="{{ asset('assets/front/img/' . $bs->breadcrumb) }}">
+    <div class="qr-breadcrumb lazy" data-bg="{{ asset('assets/front/img/' . $bs->breadcrumb) }}" style="background-image: url('{{ asset('assets/front/img/' . $bs->breadcrumb) }}'); background-size: cover; background-position: center;">
         <div class="container">
             <div class="qr-breadcrumb-details">
                 <h2>{{ $bs->website_title }}</h2>

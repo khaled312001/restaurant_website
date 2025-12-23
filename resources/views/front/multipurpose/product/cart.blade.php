@@ -9,7 +9,7 @@
 @section('content')
 
 
-  <section class="page-title-area d-flex align-items-center lazy" data-bg="{{asset('assets/front/img/' . $bs->breadcrumb)}}" style="background-size: cover;">
+  <section class="page-title-area d-flex align-items-center lazy" data-bg="{{asset('assets/front/img/' . $bs->breadcrumb)}}" style="background-image: url('{{asset('assets/front/img/' . $bs->breadcrumb)}}'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
