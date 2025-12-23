@@ -41,15 +41,16 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
         'uses' => 'PermissionsController@permissions',
     ]);
 
-    Route::get('license', [
-        'as' => 'license',
-        'uses' => 'LicenseController@license',
-    ]);
+    // License verification routes removed - bypassed
+    // Route::get('license', [
+    //     'as' => 'license',
+    //     'uses' => 'LicenseController@license',
+    // ]);
 
-    Route::post('environment/licenseCheck', [
-        'as' => 'licenseCheck',
-        'uses' => 'LicenseController@licenseCheck',
-    ]);
+    // Route::post('environment/licenseCheck', [
+    //     'as' => 'licenseCheck',
+    //     'uses' => 'LicenseController@licenseCheck',
+    // ]);
 
     Route::get('database', [
         'as' => 'database',
